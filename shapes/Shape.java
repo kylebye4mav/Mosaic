@@ -1,7 +1,6 @@
 package shapes;
 
 import javax.swing.JPanel;
-import java.awt.BorderLayout;
 import java.awt.Color;
 
 /**
@@ -50,8 +49,9 @@ public abstract class Shape extends JPanel {
 
     public Shape(int xIn, int yIn, int widthIn, int heightIn, Color colorIn) {
 
+        setLayout(null);
         setBounds(xIn, yIn, widthIn, heightIn);
-        setLayout(new BorderLayout());
+        setColor(colorIn);
 
     }
 

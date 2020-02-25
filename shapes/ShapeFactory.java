@@ -9,6 +9,10 @@ import java.awt.Color;
  * @see Rectangle
  */
 public final class ShapeFactory {
+    
+    public final static String[] ALL_SHAPE_TYPES = {
+        "oval", "rectangle"
+    };
 
     public final static String OVAL = "oval";
     public final static String RECTANGLE = "rectangle";
