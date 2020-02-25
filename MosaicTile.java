@@ -1,5 +1,6 @@
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import java.awt.Color;
 import shapes.*;
 
 /**
@@ -57,5 +58,19 @@ public class MosaicTile extends JPanel {
     public MosaicTile() {
 
     }
+
+    public MosaicTile(int xIn, int yIn, int widthIn, int heightIn) {
+
+    }
+
+    public MosaicTile(int xIn, int yIn, int widthIn, int heightIn, Color colorIn) {
+
+    }
+
+    public MosaicTile(int xIn, int yIn, int widthIn, int heightIn, Color colorIn, int shapeTypeIn) {
+        
+    }
+
+    
     
 }

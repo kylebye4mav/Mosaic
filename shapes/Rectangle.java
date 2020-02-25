@@ -1,5 +1,7 @@
 package shapes;
 
+import java.awt.Color;
+
 /**
  * @author  Kyle Bye
  */
@@ -7,6 +9,18 @@ package shapes;
 public class Rectangle extends Shape {
 
     public Rectangle() {
+
+    }
+
+    public Rectangle(int widthIn, int heightIn) {
+
+    }
+
+    public Rectangle(int xIn, int yIn, int widthIn, int heightIn) {
+
+    }
+
+    public Rectangle(int xIn, int yIn, int widthIn, int heightIn, Color colorIn) {
 
     }
 

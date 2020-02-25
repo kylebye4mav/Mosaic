@@ -1,5 +1,6 @@
 package shapes;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 /**
@@ -49,6 +50,25 @@ public class Oval extends Shape {
     //  Constructors
 
     public Oval() {
+
+        this(0, 0, 0, 0, Color.WHITE);
+        
+    }
+
+    public Oval(int radiusXIn, int radiusYIn) {
+
+        this(0, 0, radiusXIn, radiusYIn, Color.WHITE);
+
+    }
+
+    public Oval(int xIn, int yIn, int radiusXIn, int radiusYIn) {
+
+        this(xIn, yIn, radiusXIn, radiusYIn, Color.WHITE);
+    }
+
+    public Oval(int xIn, int yIn, int radiusXIn, int radiusYIn, Color colorIn) {
+
+        super(xIn, yIn, radiusXIn*2, radiusYIn*2, colorIn);
 
     }
 
