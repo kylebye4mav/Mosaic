@@ -7,8 +7,38 @@ import java.awt.BorderLayout;
 @SuppressWarnings("serial")
 public class MosaicFrame extends JFrame {
 
-    private MosaicShapePanel shapePanel;
+    private MosaicTilePanel tilePanel;
     private MosaicButtonPanel buttonPanel;
+
+    //  Getters
+
+    public MosaicTilePanel getTilePanel() {
+
+        return tilePanel;
+
+    }
+
+    public MosaicButtonPanel getButtonPanel() {
+
+        return buttonPanel;
+
+    }
+
+    //  Setters
+
+    public void setTilePanel(MosaicTilePanel tilePanelIn) {
+
+        tilePanel = tilePanelIn;
+
+    }
+
+    public void setButtonPanel(MosaicButtonPanel buttonPanelIn) {
+
+        buttonPanel = buttonPanelIn;
+
+    }
+
+    //  Constructors
 
     public MosaicFrame() {
 
@@ -31,12 +61,12 @@ public class MosaicFrame extends JFrame {
         setTitle("Mosaic");
 
         //  Instantiate and add a MosaicPanel.
-        shapePanel = new MosaicShapePanel();
-        add(shapePanel, BorderLayout.CENTER);
+        tilePanel = new MosaicTilePanel();
+        add(tilePanel, BorderLayout.CENTER);
 
         //  Instantiate and add a MosaicButtonPanel
-        //  in which a reference of shapePanel is passed.
-        buttonPanel = new MosaicButtonPanel(shapePanel);
+        //  in which a reference of TilePanel is passed.
+        buttonPanel = new MosaicButtonPanel(tilePanel);
         add(buttonPanel, BorderLayout.SOUTH);
 
     }

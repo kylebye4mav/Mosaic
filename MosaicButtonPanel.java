@@ -12,13 +12,13 @@ import java.awt.event.ActionListener;
 @SuppressWarnings("serial")
 public class MosaicButtonPanel extends JPanel implements ActionListener {
 
-    private MosaicShapePanel shapePanel;
+    private MosaicTilePanel tilePanel;
     private JButton randomizeButton;
 
-    public MosaicButtonPanel(MosaicShapePanel shapePanelIn) {
+    public MosaicButtonPanel(MosaicTilePanel tilePanelIn) {
         super();
 
-        shapePanel = shapePanelIn;
+        tilePanel = tilePanelIn;
 
         randomizeButton = new JButton();
         randomizeButton.setText("Randomize");
@@ -30,7 +30,7 @@ public class MosaicButtonPanel extends JPanel implements ActionListener {
 
     public void actionPerformed(ActionEvent ae) {
 
-        shapePanel.generateTiles();
+        tilePanel.shuffleTiles();
 
         System.out.println("Randomize Action Performed...");
 

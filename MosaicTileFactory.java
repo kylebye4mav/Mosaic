@@ -35,5 +35,7 @@ public final class MosaicTileFactory {
         tile = new MosaicTile(xIn, yIn, widthIn, heightIn, color, backgroundShape, letter);
 
         return tile;
+
     }
+    
 }
