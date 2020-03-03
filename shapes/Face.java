@@ -3,7 +3,6 @@ package shapes;
 import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
@@ -29,6 +28,7 @@ public final class Face extends Oval {
     // Properties
     private int faceState;
     private GridBagLayout layout;
+    private JPanel[][] gridPanels;
     private Oval[] eyes;
     private Shape mouth;
 
@@ -72,18 +72,11 @@ public final class Face extends Oval {
 
         eyes = eyesIn;
 
-        GridBagConstraints g = new GridBagConstraints();
-        g.fill = GridBagConstraints.BOTH;
-        g.weighty = 0.5;
-
         // Left Eye
-        g.gridx = 0;
-        g.gridy = 0;
-        add(eyes[0], g);
+        gridPanels[1][1] = eyes[0];
 
         //  Right Eye
-        g.gridx = 3; g.gridy = 1;
-        add(eyes[1], g);
+        gridPanels[1][3] = eyes[1];
 
     }
     public void setFaceState(int faceStateIn) {
@@ -97,6 +90,8 @@ public final class Face extends Oval {
     public void setMouth(Shape mouthIn) {
 
         mouth = mouthIn;
+
+        gridPanels[3][1] = mouth;
 
     }
 
@@ -153,16 +148,24 @@ public final class Face extends Oval {
         layout = new GridBagLayout();
         setLayout(layout);
 
-        //  Diameter is twice the radius in both the x and y.
-        int diameterX = getWidth();
-        int diameterY = getHeight();
+        //  Fill Grid Panels
+        gridPanels = new JPanel[5][5];
+        JPanel emptyPanel;
+        for (int i = 0; i<5; ++i) {
+            for (int j = 0; j<5; ++j) {
+                emptyPanel = new JPanel();
+                emptyPanel.setBackground(new Color(0,0,0,0));
+                gridPanels[i][j] = emptyPanel;
+                add(gridPanels[i][j]);
+            }
+        }
 
         //  Initialize the emotion or faceState of this Face instance.
         setFaceState(faceStateIn);
 
         //  Initialize the eyes of the Face that are Oval objects.
-        Oval leftEye = new Oval(diameterX/4, diameterY/4, radiusXIn/4, radiusYIn/4, Color.WHITE);
-        Oval rightEye = new Oval(diameterX - 2*(diameterX/4), diameterY/4, radiusXIn/4, radiusYIn/4, Color.WHITE);
+        Oval leftEye = new Oval();
+        Oval rightEye = new Oval();
         setEyes( new Oval[] {leftEye, rightEye} );
 
         //  Initialize the mouth shape of the Face.
@@ -170,7 +173,7 @@ public final class Face extends Oval {
 
             //   A neutral state contructs a straight mouth in the form of a rectangle: (o_o) 
             Rectangle straightMouth = new Rectangle(
-                diameterX/4, diameterY - (diameterY/3), diameterX/2, diameterY/12, Color.WHITE
+                0, 0, 0,0, Color.WHITE
                 );
             setMouth(straightMouth);
 
@@ -186,7 +189,7 @@ public final class Face extends Oval {
 
                 //  Set the mouthOval to a SemiOval instance with its flat side facing down.
                 mouthOval = new SemiOval(
-                    diameterX/4, diameterY/3, radiusXIn/2, radiusYIn/2, Color.WHITE, SemiOval.DIRECTION_DOWN
+                    0, 0, 0, 0, Color.WHITE, SemiOval.DIRECTION_DOWN
                     );
 
             }
@@ -194,7 +197,7 @@ public final class Face extends Oval {
 
                 //  Set the mouthOval to a SemiOval instance with tis flat side facing up.
                 mouthOval = new SemiOval(
-                    diameterX/4, diameterY - (diameterY/3), radiusXIn/2, radiusYIn/2, Color.WHITE, SemiOval.DIRECTION_UP
+                    0, 0 , 0, 0, Color.WHITE, SemiOval.DIRECTION_UP
                     );   
 
             }
@@ -203,9 +206,26 @@ public final class Face extends Oval {
                 
         }
 
-        //  Add the eyes and the mouth to this Face component.
-        //for (Oval eye : eyes) add(eye);
-        add(mouth);
+        for (int i = 0; i<5; ++i) {
+            for (int j = 0; j<5; ++j) {
+                GridBagConstraints g = new GridBagConstraints();
+                g.weightx = 0.1;
+                g.weighty = 0.1;
+                g.fill = GridBagConstraints.BOTH;
+                g.gridx = j;
+                g.gridy = i;
+
+                if (i == 3) {
+                    if (j == 1) {
+                        g.gridwidth = 3; g. gridheight = 1;
+                        add(gridPanels[i][j], g);
+                        continue;
+                    }
+                    else if (j == 2 || j == 3) continue;
+                }
+                add(gridPanels[i][j], g);
+            }
+        }
 
     }
 

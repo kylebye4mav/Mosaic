@@ -27,13 +27,14 @@ public class Oval extends Shape {
     public void setRadiusX(int radiusXIn) {
 
         radiusX = radiusXIn;
+        super.setBounds(getX(), getY(), radiusXIn*2, getHeight());
 
     }
 
     public void setRadiusY(int radiusYIn) {
 
         radiusY = radiusYIn;
-
+        super.setBounds(getX(), getY(), getWidth(), getHeight());
     }
 
     //  Other Methods

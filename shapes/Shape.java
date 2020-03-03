@@ -51,6 +51,8 @@ public abstract class Shape extends JPanel {
 
         setLayout(null);
         setBounds(xIn, yIn, widthIn, heightIn);
+        setBackground(new Color(0,0,0,0));
+        setOpaque(true);
         setColor(colorIn);
 
     }

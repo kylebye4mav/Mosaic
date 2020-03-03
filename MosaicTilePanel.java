@@ -74,6 +74,9 @@ public class MosaicTilePanel extends JPanel {
         //  Get every instance of MosaicTile
         MosaicTile[] tiles = getTiles();
 
+        //  Reset every tile to default state (Face hidden).
+        for (MosaicTile tile : tiles) tile.hideFace();
+
         //  Remove every tile from this panel.
         removeTiles();
 

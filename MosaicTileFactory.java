@@ -25,17 +25,24 @@ public final class MosaicTileFactory {
 
     public final static MosaicTile createRandomTile(int xIn, int yIn, int widthIn, int heightIn) {
 
-        MosaicTile tile;
-
         Color color = colors[random.nextInt(colors.length)];
         String shapeType = ShapeFactory.ALL_SHAPE_TYPES[random.nextInt(ShapeFactory.ALL_SHAPE_TYPES.length)];
         char letter = letters[random.nextInt(letters.length)];
         Shape backgroundShape = ShapeFactory.createShape(0, 0, widthIn, heightIn, color, shapeType);
+        Face face = FaceFactory.generateRandomFace(color);
 
-        tile = new MosaicTile(xIn, yIn, widthIn, heightIn, color, backgroundShape, letter);
+        return createTile(xIn, yIn, widthIn, heightIn, color, shapeType, letter, backgroundShape, face);
+
+    }
+
+    public final static MosaicTile createTile(int xIn, int yIn, int widthIn, int heightIn, Color colorIn, 
+    String shapeTypeIn, char letterIn, Shape backgroundShapeIn, Face faceIn) {
+
+        MosaicTile tile;
+
+        tile = new MosaicTile(xIn, yIn, widthIn, heightIn, colorIn, backgroundShapeIn, letterIn, faceIn);
 
         return tile;
-
     }
     
 }

@@ -1,7 +1,8 @@
 import javax.swing.JPanel;
 import javax.swing.JLabel;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.OverlayLayout;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseEvent;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -11,7 +12,7 @@ import shapes.*;
  * @author  Kyle Bye
  */
 @SuppressWarnings("serial")
-public class MosaicTile extends JPanel implements ActionListener{
+public class MosaicTile extends JPanel implements MouseListener{
 
     private final static Color[] darkColors = {
         Color.BLACK, Color.BLUE, Color.GRAY, 
@@ -30,16 +31,15 @@ public class MosaicTile extends JPanel implements ActionListener{
 
     }
 
+    public Face getFace() {
+
+        return face;
+
+    }
 
     public JLabel getLetterLabel() {
 
         return letterLabel;
-
-    }
-
-    public Face getFace() {
-
-        return face;
 
     }
 
@@ -51,30 +51,60 @@ public class MosaicTile extends JPanel implements ActionListener{
 
     }
 
-    public void setLetterLabel(JLabel letterLabelIn) {
-
-        letterLabel = letterLabelIn;
-
-    }
-
     public void setFace(Face faceIn) {
 
         face = faceIn;
 
     }
 
+    public void setLetterLabel(JLabel letterLabelIn) {
+
+        letterLabel = letterLabelIn;
+
+    }
+
     //  Other Methods
 
-    public void actionPerformed(ActionEvent ae) {
+    public void changeState() {
 
-        if (face != null) {
+        if (face != null && backgroundShape != null) {
 
-            if (face.isVisible()) face.setVisible(false);
-            else face.setVisible(true);
+            if (face.isVisible()) hideFace();
+            else showFace();
 
         }
 
     }
+
+    public void hideFace() {
+
+        face.setVisible(false);
+        backgroundShape.setVisible(true);
+
+    }
+
+    public void showFace() {
+
+        backgroundShape.setVisible(false);
+        face.setVisible(true);
+
+    }
+
+    //  Mouse Event Handlers
+
+    public void mouseClicked(MouseEvent me) {
+
+        changeState();
+
+    }
+
+    public void mouseEntered(MouseEvent e) {}
+
+    public void mouseExited(MouseEvent e) {}
+
+    public void mousePressed(MouseEvent e) {}
+
+    public void mouseReleased(MouseEvent e) {}
 
     //  Constructors
 
@@ -105,13 +135,20 @@ public class MosaicTile extends JPanel implements ActionListener{
     public MosaicTile(int xIn, int yIn, int widthIn, int heightIn, Color colorIn, Shape backgroundShapeIn, char letterIn) {
 
         this(xIn, yIn, widthIn, heightIn, colorIn, backgroundShapeIn, letterIn, new Face(xIn, yIn, widthIn/2, heightIn/2, Color.WHITE, 0));
+
     }
 
     public MosaicTile(int xIn, int yIn, int widthIn, int heightIn, Color colorIn, Shape backgroundShapeIn, char letterIn, Face faceIn) {
 
         super();
-        
-        setLayout(null);
+
+        //  Done to avoid graphical artifacts with other LayoutManagers.
+        setOpaque(false);
+
+        //  OverlayLayout allows components to be place ontop another.
+        setLayout(new OverlayLayout(this));
+
+        addMouseListener(this);
 
         //  Add the Face to this panel but set it to not be visible.
         faceIn.setVisible(false);
@@ -144,6 +181,7 @@ public class MosaicTile extends JPanel implements ActionListener{
         //  Add a refernce of backgroundShape to this instance.
         backgroundShape.add(lLabel, BorderLayout.CENTER);
         add(backgroundShape);
+
     }    
     
 }

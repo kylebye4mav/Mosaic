@@ -41,7 +41,7 @@ public class MosaicUtil {
         for (int i = 0; i<temp.length; ++i) temp[i] = -1;
 
         ArrayList<Integer> indices = new ArrayList<Integer>();
-        for (int i : arr) indices.add(new Integer(i));
+        for (int i : arr) indices.add(i);
 
         while(!indices.isEmpty()) {
 
