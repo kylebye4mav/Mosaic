@@ -81,14 +81,19 @@ public class SemiOval extends Shape {
     @Override
     public String toString() {
 
-        return String.format(
-            "%sSemiOval(direction: %d radiusX: %d; radiusY: %d); ",
-            super.toString(), direction, radiusX, radiusY
+        String returnString = new String();
+        String formatter = "%s::SemiOval[direction:{%d}, radiusX:{%d}, radiusY:{%d}]";
+
+        returnString = String.format(
+            formatter, super.toString(), direction, radiusX, radiusY
             );
+
+        return returnString;
 
     }
 
     //   Constructors
+
     public SemiOval() {
 
         this(0, 0, 0, 0, Color.WHITE);

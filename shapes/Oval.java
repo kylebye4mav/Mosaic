@@ -39,12 +39,27 @@ public class Oval extends Shape {
 
     //  Other Methods
 
+    @Override
     public void paintComponent(Graphics g) {
 
         super.paintComponent(g);
 
         g.setColor(getColor());
         g.fillOval(0, 0, getWidth(), getHeight());
+
+    }
+
+    @Override
+    public String toString() {
+
+        String returnString = new String();
+        String formatter = "%s::Oval[radiusX:{%d}, radiusY:{%d}]";
+
+        returnString = String.format(
+            formatter, super.toString(), radiusX, radiusY
+            );
+
+        return returnString;
 
     }
 

@@ -11,12 +11,25 @@ public class Rectangle extends Shape {
 
     //  Other Methods
 
+    @Override
     public void paintComponent(Graphics g) {
 
         super.paintComponent(g);
 
         g.setColor(getColor());
         g.fillRect(0, 0, getWidth(), getHeight());
+
+    }
+
+    @Override
+    public String toString() {
+        
+        String returnString = new String();
+        String formatter = "%s::Rectangle[]";
+
+        returnString = String.format(formatter, super.toString());
+
+        return returnString;
 
     }
 

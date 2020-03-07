@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
 import shapes.*;
 
 /**
@@ -92,19 +93,50 @@ public class MosaicTile extends JPanel implements MouseListener{
 
     //  Mouse Event Handlers
 
-    public void mouseClicked(MouseEvent me) {
-
-        changeState();
-
-    }
+    public void mouseClicked(MouseEvent me) {}
 
     public void mouseEntered(MouseEvent e) {}
 
     public void mouseExited(MouseEvent e) {}
 
-    public void mousePressed(MouseEvent e) {}
+    public void mousePressed(MouseEvent e) {
+
+        changeState();
+
+    }
 
     public void mouseReleased(MouseEvent e) {}
+
+    @Override
+    public void paint(Graphics g) {
+
+        super.paint(g);
+
+        System.out.println(toString());
+        
+    }
+
+    @Override
+    public void paintComponent(Graphics g) {
+
+        super.paintComponent(g);
+
+        System.out.println(toString());
+
+    } 
+
+    @Override
+    public String toString() {
+
+        String returnString = new String();
+        String formatter = "MosaicTile[backgroundShape:{%s}, face:{%s}, letterLabel:{%s}]";
+
+        returnString = String.format(
+            formatter, backgroundShape.toString(), face.toString(), letterLabel.getText()
+            );
+
+        return returnString;
+    }
 
     //  Constructors
 
@@ -150,7 +182,9 @@ public class MosaicTile extends JPanel implements MouseListener{
 
         addMouseListener(this);
 
-        //  Add the Face to this panel but set it to not be visible.
+        //  Add the Face to this panel but set it to not be visible
+        //  because by default, the backgroundShape is visible while
+        //  face is not.
         faceIn.setVisible(false);
         setFace(faceIn);
         add(faceIn);
@@ -170,7 +204,9 @@ public class MosaicTile extends JPanel implements MouseListener{
         //  then set the text of letterLabel to be white. Otherwise,
         //  keep it black.
         if (SequentialSearch.ifObjectExists(colorIn, darkColors)) {
+
             lLabel.setForeground(Color.WHITE);
+
         }
         else lLabel.setForeground(Color.BLACK);
 

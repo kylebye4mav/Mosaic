@@ -27,6 +27,22 @@ public abstract class Shape extends JPanel {
 
     }
 
+    //  Other Methods
+
+    @Override
+    public String toString() {
+
+        String returnString = new String();
+        String formatter = "Shape: [x:{%d}, y:{%d}, width:{%d}, height:{%d}, color:{%s}]";
+
+        returnString = String.format(
+            formatter, getX(), getY(), getWidth(), getHeight(), getColor().toString()
+            );
+
+        return returnString;
+
+    }
+
     //  Constructors
 
     public Shape() {

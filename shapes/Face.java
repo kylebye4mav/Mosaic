@@ -20,14 +20,13 @@ import java.awt.GridBagConstraints;
 public final class Face extends Oval {
 
     // Static Properties that affect
-    // the motuh shape.
+    // the mouth shape.
     public final static int SAD_STATE = 0;
     public final static int NEUTRAL_STATE = 1;
     public final static int HAPPY_STATE = 2;
 
     // Properties
     private int faceState;
-    private GridBagLayout layout;
     private JPanel[][] gridPanels;
     private Oval[] eyes;
     private Shape mouth;
@@ -72,13 +71,14 @@ public final class Face extends Oval {
 
         eyes = eyesIn;
 
-        // Left Eye
+        //  Set Left Eye to the grid.
         gridPanels[1][1] = eyes[0];
 
-        //  Right Eye
+        //  Set Right Eye to the grid.
         gridPanels[1][3] = eyes[1];
 
     }
+
     public void setFaceState(int faceStateIn) {
 
         if (faceState >= 0 && faceState <= 2) {
@@ -104,13 +104,18 @@ public final class Face extends Oval {
 
     }
 
+    @Override
     public String toString() {
 
-        return String.format(
-            "%sFace(\n\t(faceState: %d); \n\t(eyes[0]: %s); \n\t(eyes[1]: %s); \n\t(mouth: %s); \n\t);\n", 
-            super.toString(), faceState, eyes[0].toString(), eyes[1].toString(),
+        String returnString = new String();
+        String formatter = "%s::Face[faceState:{%d}, eyes[0]:{%s}, eyes[1]:{%s}, mouth:{%s}]";
+
+        returnString = String.format(
+            formatter, super.toString(), faceState, eyes[0].toString(), eyes[1].toString(),
             mouth.toString()
-        );
+            );
+
+        return returnString;
 
     }
 
@@ -145,8 +150,7 @@ public final class Face extends Oval {
         super(xIn, yIn, radiusXIn, radiusYIn, colorIn);
 
         //  Initialize layout manager
-        layout = new GridBagLayout();
-        setLayout(layout);
+        setLayout(new GridBagLayout());
 
         //  Fill Grid Panels
         gridPanels = new JPanel[5][5];
