@@ -10,11 +10,19 @@ import java.awt.Graphics;
 import shapes.*;
 
 /**
+ * This class
+ * 
  * @author  Kyle Bye
+ * @see JPanel
+ * @see MosaicTileFactory
+ * @see MouseListener
+ * @see OverlayLayout
  */
 @SuppressWarnings("serial")
 public class MosaicTile extends JPanel implements MouseListener{
 
+    //  Properties
+    
     private final static Color[] darkColors = {
         Color.BLACK, Color.BLUE, Color.GRAY, 
         Color.DARK_GRAY, Color.RED
@@ -66,6 +74,11 @@ public class MosaicTile extends JPanel implements MouseListener{
 
     //  Other Methods
 
+    /**
+     * As long as this instance's face and backgroundShape
+     * are not null, the visiblity states of there objects
+     * are flipped everytime this method executes.
+     */
     public void changeState() {
 
         if (face != null && backgroundShape != null) {
@@ -77,6 +90,10 @@ public class MosaicTile extends JPanel implements MouseListener{
 
     }
 
+    /**
+     * Sets face to not visible and sets backgroundShape
+     * to be visible.
+     */
     public void hideFace() {
 
         face.setVisible(false);
@@ -84,6 +101,10 @@ public class MosaicTile extends JPanel implements MouseListener{
 
     }
 
+    /**
+     * Sets face to be visible and sets backgroundShape 
+     * to not be visible.
+     */
     public void showFace() {
 
         backgroundShape.setVisible(false);
@@ -99,6 +120,11 @@ public class MosaicTile extends JPanel implements MouseListener{
 
     public void mouseExited(MouseEvent e) {}
 
+    /**
+     * Calls <code>changeState()</code> when the mouse
+     * is pressed on this component.
+     * @see MosaicTile#changeState()
+     */
     public void mousePressed(MouseEvent e) {
 
         changeState();
@@ -117,19 +143,10 @@ public class MosaicTile extends JPanel implements MouseListener{
     }
 
     @Override
-    public void paintComponent(Graphics g) {
-
-        super.paintComponent(g);
-
-        System.out.println(toString());
-
-    } 
-
-    @Override
     public String toString() {
 
         String returnString = new String();
-        String formatter = "MosaicTile[backgroundShape:{%s}, face:{%s}, letterLabel:{%s}]";
+        String formatter = "MosaicTile[backgroundShape:{%s}, face:{%s}, letterLabel:{%s}]\n";
 
         returnString = String.format(
             formatter, backgroundShape.toString(), face.toString(), letterLabel.getText()

@@ -5,9 +5,13 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 /**
+ * This class represents a semi-oval that is a JPanel.
+ * 
+ * Uses Absolute (null) layout.
+ * 
  * @author  Kyle Bye
- * @see Shape
  * @see JPanel
+ * @see Shape
  */
 @SuppressWarnings("serial")
 public class SemiOval extends Shape {
@@ -15,20 +19,38 @@ public class SemiOval extends Shape {
     //  Static Properties that determine which
     //  direction the flat side of this SemiOval
     //  instance is facing.
+
     public static final int DIRECTION_UP = 0;
     public static final int DIRECTION_DOWN = 1;
 
     //  Properties
+
     private int direction;
     private int radiusX;
     private int radiusY;
 
     //  Getters
-    public int getDirection() { return direction; }
-    public int getRadiusX() { return radiusX; }
-    public int getRadiusY() { return radiusY; }
+
+    public int getDirection() { 
+
+        return direction; 
+
+    }
+
+    public int getRadiusX() { 
+
+        return radiusX; 
+
+    }
+
+    public int getRadiusY() { 
+        
+        return radiusY; 
+    
+    }
 
     //  Setters
+
     public void setDirection(int directionIn) {
 
         if (directionIn >= 0 && directionIn < 2) {
@@ -50,6 +72,7 @@ public class SemiOval extends Shape {
     }
 
     //   Other Methods
+    
     @Override
     public void paintComponent(Graphics g) {
 

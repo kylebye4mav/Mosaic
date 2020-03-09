@@ -4,7 +4,12 @@ import javax.swing.JPanel;
 import java.awt.Color;
 
 /**
+ * This class represents a shape is a JPanel.
  * 
+ * Uses Absolute (null) layout.
+ * 
+ * @see Color
+ * @see JPanel
  */
 @SuppressWarnings("serial")
 public abstract class Shape extends JPanel {

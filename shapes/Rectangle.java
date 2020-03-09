@@ -4,7 +4,14 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 /**
+ * This class represents a Rectangle that is a JPanel.
+ * 
+ * Uses Absolute (null) layout.
+ * 
  * @author  Kyle Bye
+ * @see Color
+ * @see JPanel
+ * @see Shape
  */
 @SuppressWarnings("serial")
 public class Rectangle extends Shape {

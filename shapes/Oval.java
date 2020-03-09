@@ -4,11 +4,20 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 /**
+ * This class represents a Oval that is a JPanel.
+ * 
+ * Uses Absolute (null) layout.
+ * 
  * @author  Kyle Bye
+ * @see Color
+ * @see JPanel
+ * @see Shape
  */
 @SuppressWarnings("serial")
 public class Oval extends Shape {
 
+    //  Properties
+    
     private int radiusX;
     private int radiusY;
 

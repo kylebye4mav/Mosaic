@@ -2,13 +2,24 @@ import java.util.Random;
 import java.util.ArrayList;
 
 /**
- * @author  Kyle Bye
+ * This class contains methods that deal with shuffling
+ * or randomizing the order of an array of objects.
  * 
+ * @author  Kyle Bye
+ * @see ArrayList
+ * @see Random
  */
 public class MosaicUtil {
 
     private final static Random random = new Random();
 
+    /**
+     * Takes an array of objects and randomizes the order
+     * of the array. The shallow copy of the provided array
+     * is modified such that returning isn't neccessay.
+     * 
+     * @param   arr object array to randomize.
+     */
     public static void randomizeArray(Object[] arr) {
 
         //  Create a temporary new Object Array
@@ -34,6 +45,13 @@ public class MosaicUtil {
 
     }
 
+    /**
+     * Takes an array of integers and randomizes the order
+     * of the array. The shallow copy of the provided array
+     * is modified such that returning isn't neccessay.
+     * 
+     * @param   arr integer array to randomize.
+     */
     public static void randomizeIndices(int[] arr) {
 
         int[] temp = new int[arr.length];

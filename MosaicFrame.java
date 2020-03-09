@@ -1,11 +1,21 @@
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
+import java.awt.Graphics;
 
 /**
+ * This class is responsible for displaying and holding
+ * an instance of both <code>MosaicTilePanel</code> and
+ * <code>MosaicButtonPanel</code>.
+ * 
+ * Uses <code>BorderLayout</code>.
+ * 
  * @author  Kyle Bye
+ * @see BorderLayout
  */
 @SuppressWarnings("serial")
 public class MosaicFrame extends JFrame {
+
+    //  Properties
 
     private MosaicTilePanel tilePanel;
     private MosaicButtonPanel buttonPanel;
@@ -35,6 +45,17 @@ public class MosaicFrame extends JFrame {
     public void setButtonPanel(MosaicButtonPanel buttonPanelIn) {
 
         buttonPanel = buttonPanelIn;
+
+    }
+
+    //  Other Methods
+
+    @Override
+    public void paint(Graphics g) {
+
+        System.out.println("Start paint***\n");
+
+        super.paint(g);
 
     }
 

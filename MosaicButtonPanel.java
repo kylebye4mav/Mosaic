@@ -5,29 +5,71 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
+ * 
+ * 
  * @author  Kyle Bye
  * @see JButton
  * @see JPanel
+ * @see MosaicTilePanel
  */
 @SuppressWarnings("serial")
 public class MosaicButtonPanel extends JPanel implements ActionListener {
 
+    //  Properties
+    
     private MosaicTilePanel tilePanel;
     private JButton randomizeButton;
 
-    public MosaicButtonPanel(MosaicTilePanel tilePanelIn) {
-        super();
+    //  Getters
 
-        tilePanel = tilePanelIn;
+    public JButton getJButton() {
 
-        randomizeButton = new JButton();
-        randomizeButton.setText("Randomize");
-        randomizeButton.addActionListener(this);
-        add(randomizeButton);
-        
+        return randomizeButton;
 
     }
 
+    public MosaicTilePanel getTilePanel() {
+
+        return tilePanel;
+
+    }
+
+    //  Setters
+
+    public void setRandomizeButton(JButton randomizeButtonIn) {
+
+        randomizeButton = randomizeButtonIn;
+
+    }
+
+    public void setTilePanel(MosaicTilePanel tilePanelIn) {
+
+        tilePanel = tilePanelIn;
+
+    }
+
+    //  Constructors
+
+    public MosaicButtonPanel(MosaicTilePanel tilePanelIn) {
+
+        super();
+
+        setTilePanel(tilePanelIn);
+
+        //  Initialize Randomize Button.
+        setRandomizeButton(new JButton());
+        randomizeButton.setText("Randomize");
+        randomizeButton.addActionListener(this);
+        add(randomizeButton);
+
+    }
+
+    /**
+     * Calls <code>shuffleTiles()</code> within the tilePanel.
+     * 
+     * @param   ae  ActionEvent
+     * @see MosaicTilePanel#shuffleTiles()
+     */
     public void actionPerformed(ActionEvent ae) {
 
         tilePanel.shuffleTiles();

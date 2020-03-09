@@ -9,29 +9,36 @@ import java.awt.GridBagConstraints;
 
 /**
  * This class represents a face with a 2 length array of eyes that are Oval
- * instances along with a mouth that is a Shape of some kind.
+ * instances along with a mouth that is a Shape of some kind. 
+ * 
+ * Uses <code>GridBagLayout</code>.
  * 
  * @author Kyle Bye
+ * @see Color
+ * @see GridBagLayout
+ * @see JPanel
  * @see Oval
  * @see SemiOval
- * @see JPanel
  */
 @SuppressWarnings("serial")
 public final class Face extends Oval {
 
     // Static Properties that affect
     // the mouth shape.
+    
     public final static int SAD_STATE = 0;
     public final static int NEUTRAL_STATE = 1;
     public final static int HAPPY_STATE = 2;
 
     // Properties
+
     private int faceState;
     private JPanel[][] gridPanels;
     private Oval[] eyes;
     private Shape mouth;
 
     // Getters
+
     public Oval[] getEyes() {
 
         return eyes;
@@ -51,6 +58,7 @@ public final class Face extends Oval {
     }
 
     // Setters
+
     public void setEyes(Oval[] eyesIn) {
 
         if (eyesIn.length != 2 || eyesIn == null) {
@@ -96,11 +104,10 @@ public final class Face extends Oval {
     }
 
     //   Other Methods
+
     public void paintComponent(Graphics g) {
 
         super.paintComponent(g);
-
-        System.out.println(toString());
 
     }
 
@@ -210,6 +217,7 @@ public final class Face extends Oval {
                 
         }
 
+        //  Add all the gridPanels.
         for (int i = 0; i<5; ++i) {
             for (int j = 0; j<5; ++j) {
                 GridBagConstraints g = new GridBagConstraints();
@@ -219,7 +227,9 @@ public final class Face extends Oval {
                 g.gridx = j;
                 g.gridy = i;
 
+                // Leave space for the mouth object.
                 if (i == 3) {
+
                     if (j == 1) {
                         g.gridwidth = 3; g. gridheight = 1;
                         add(gridPanels[i][j], g);
@@ -227,7 +237,9 @@ public final class Face extends Oval {
                     }
                     else if (j == 2 || j == 3) continue;
                 }
+
                 add(gridPanels[i][j], g);
+
             }
         }
 

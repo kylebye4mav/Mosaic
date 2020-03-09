@@ -17,7 +17,7 @@ public class SequentialSearch {
      * 
      * @param   o   Object to find.
      * @param   arr Array to search through.
-     * @return  True if o exists in arr. Otherwise, returns false.
+     * @return  true if o exists in arr. Otherwise, returns false.
      */
     public static boolean ifObjectExists(Object o, Object[] arr) {
 
@@ -40,7 +40,7 @@ public class SequentialSearch {
      * 
      * @param   o   Object to find.
      * @param   arr Array to search through.
-     * @return  Index of o if it exists in arr. Otherwise, returns -1.
+     * @return  index of o if it exists in arr. Otherwise, returns -1.
      */
     public static int findIndexOf(Object o, Object[] arr) {
 
